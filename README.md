@@ -43,10 +43,11 @@ You required to send the **social_id** and **social_type** form field.
 
 
 If a customer does not yet exist with social ID in database, you required to register them first into POST **/V1/customers** endpoint. Add required extension attributes to the customer POST data.
+
 `
 extension_attributes: {
-    social_id: newProps.socialData.id,
-    social_type: 'facebook'
+    social_id: '<the_social_id>',
+    social_type: '<the_social_type>'
 }
 `
 
