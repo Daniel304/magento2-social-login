@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * This file is part of the Sulaeman Social Login package.
+ *
+ * @author Sulaeman <me@sulaeman.com>
+ * @copyright Copyright (c) 2017
+ * @package Sulaeman_SocialLogin
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Magento\Store\Api\Data\StoreConfigInterface">
+        <attribute code="social_facebook_app_id" type="string" />
+        <attribute code="social_facebook_app_secret" type="string" />
+        <attribute code="social_google_client_id" type="string" />
+        <attribute code="social_google_client_secret" type="string" />
+        <attribute code="social_google_android_client_id" type="string" />
+        <attribute code="social_google_ios_client_id" type="string" />
+        <attribute code="social_google_permissions" type="string" />
+        <attribute code="social_paypal_client_id" type="string" />
+        <attribute code="social_paypal_client_secret" type="string" />
+    </extension_attributes>
+    <extension_attributes for="Magento\Customer\Api\Data\CustomerInterface">
+        <attribute code="social_id" type="string" />
+        <attribute code="social_type" type="string" />
+    </extension_attributes>
+</config>

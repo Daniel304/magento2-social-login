@@ -14,6 +14,7 @@ namespace Sulaeman\SocialLogin\Provider;
 
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\Url;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Customer\Model\Session;
@@ -109,6 +110,7 @@ abstract class AbstractProvider
      *
      * @param \Magento\Framework\App\RequestInterface $request
      * @param \Magento\Framework\App\Filesystem\DirectoryList $directoryList
+     * @param \Magento\Framework\Encryption\EncryptorInterface $encryptor
      * @param \Magento\Framework\Url $urlBuilder
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param \Magento\Customer\Model\Session $customerSession
@@ -122,6 +124,7 @@ abstract class AbstractProvider
     public function __construct(
         RequestInterface $request,
         DirectoryList $directoryList,
+        EncryptorInterface $encryptor,
         Url $urlBuilder,
         StoreManagerInterface $storeManager,
         Session $customerSession,
@@ -144,6 +147,8 @@ abstract class AbstractProvider
         $this->cookie             = $cookie;
         $this->helper             = $helper;
         $this->repository         = $repository;
+
+        $this->helper->setEncryptor($encryptor);
 
         $loginRedirect = $this->cookie->get('login_redirect');
         if ($loginRedirect) {

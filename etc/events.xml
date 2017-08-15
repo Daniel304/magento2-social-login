@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * This file is part of the Sulaeman Social Login package.
+ *
+ * @author Sulaeman <me@sulaeman.com>
+ * @copyright Copyright (c) 2017
+ * @package Sulaeman_SocialLogin
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_save_after_data_object">
+        <observer name="sulaeman_sociallogin_customer_save_after_data_object"
+                  instance="Sulaeman\SocialLogin\Observer\Customer\Model\ResourceModel\CustomerRepository\SaveAfterDataObject"
+                  disabled="false" />
+    </event>
+</config>

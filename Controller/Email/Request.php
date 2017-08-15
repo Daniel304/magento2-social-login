@@ -18,7 +18,6 @@ use Magento\Framework\App\Action\Context;
 use Hybrid_User_Profile;
 
 use Sulaeman\SocialLogin\Helper\Cookie;
-use Sulaeman\SocialLogin\Helper\Social;
 
 /**
  * Class AbstractSocial
@@ -32,27 +31,16 @@ class Request extends Action
     protected $cookie;
 
     /**
-     * @var \Sulaeman\SocialLogin\Helper\Social
-     */
-    protected $helper;
-
-    /**
      * Constructor
      *
      * @param \Magento\Framework\App\Action\Context $context
      * @param \Sulaeman\SocialLogin\Helper\Cookie $cookie
-     * @param \Sulaeman\SocialLogin\Helper\Data $helper
      */
-    public function __construct(
-        Context $context,
-        Cookie $cookie,
-        Social $helper
-    )
+    public function __construct(Context $context, Cookie $cookie)
     {
         parent::__construct($context);
 
         $this->cookie = $cookie;
-        $this->helper = $helper;
     }
 
     /**

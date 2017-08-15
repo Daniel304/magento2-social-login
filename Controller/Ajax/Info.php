@@ -14,6 +14,7 @@
 
 namespace Sulaeman\SocialLogin\Controller\Ajax;
 
+use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\Result\JsonFactory;
@@ -35,11 +36,13 @@ class Info extends Action
     protected $helper;
 
     /**
+     * @param \Magento\Framework\Encryption\EncryptorInterface $encryptor
      * @param \Magento\Framework\App\Action\Context $context
      * @param \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
      * @param \Sulaeman\SocialLogin\Helper\Social $helper
      */
     public function __construct(
+        EncryptorInterface $encryptor, 
         Context $context, 
         JsonFactory $resultJsonFactory, 
         Social $helper
@@ -47,6 +50,7 @@ class Info extends Action
     {
         $this->resultJsonFactory = $resultJsonFactory;
         $this->helper            = $helper;
+        $this->helper->setEncryptor($encryptor);
 
         parent::__construct($context);
     }

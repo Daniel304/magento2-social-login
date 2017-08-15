@@ -12,6 +12,8 @@
 
 namespace Sulaeman\SocialLogin\Helper;
 
+use Magento\Framework\Encryption\EncryptorInterface;
+
 use Hybrid_Auth;
 use Hybrid_Endpoint;
 
@@ -23,14 +25,21 @@ class Social extends Helper
      * @var array
      */
     const XML_PATHS = [
-        'enabled'       => 'sulaeman_social_login/{social_type}/is_enabled',
-        'client_id'     => 'sulaeman_social_login/{social_type}/client_id',
-        'client_secret' => 'sulaeman_social_login/{social_type}/client_secret',
-        'permissions'   => 'sulaeman_social_login/{social_type}/permissions',
-        'redirect_url'  => 'sulaeman_social_login/{social_type}/redirect_url',
-        'window_width'  => 'sulaeman_social_login/{social_type}/window_width',
-        'window_height' => 'sulaeman_social_login/{social_type}/window_height'
+        'enabled'           => 'sulaeman_social_login/{social_type}/is_enabled',
+        'client_id'         => 'sulaeman_social_login/{social_type}/client_id',
+        'client_secret'     => 'sulaeman_social_login/{social_type}/client_secret',
+        'android_client_id' => 'sulaeman_social_login/{social_type}/android_client_id',
+        'ios_client_id'     => 'sulaeman_social_login/{social_type}/ios_client_id',
+        'permissions'       => 'sulaeman_social_login/{social_type}/permissions',
+        'redirect_url'      => 'sulaeman_social_login/{social_type}/redirect_url',
+        'window_width'      => 'sulaeman_social_login/{social_type}/window_width',
+        'window_height'     => 'sulaeman_social_login/{social_type}/window_height'
     ];
+
+    /**
+     * @var EncryptorInterface
+     */
+    protected $_encryptor;
 
     /**
      * @var string
@@ -46,6 +55,16 @@ class Social extends Helper
      * @var \Hybrid_Auth
      */
     protected $auth;
+
+    /**
+     * @param \Magento\Framework\Encryption\EncryptorInterface $encryptor
+     * @return self
+     */
+    public function setEncryptor(EncryptorInterface $encryptor)
+    {
+        $this->_encryptor = $encryptor;
+        return $this;
+    }
 
     /**
      * @param string $socialType
@@ -125,7 +144,7 @@ class Social extends Helper
      */
     public function getClientId($storeId = null)
     {
-        return $this->getConfigValue($this->getXmlConfig('client_id'), $storeId);
+        return $this->_encryptor->decrypt($this->getConfigValue($this->getXmlConfig('client_id'), $storeId));
     }
 
     /**
@@ -134,7 +153,25 @@ class Social extends Helper
      */
     public function getClientSecret($storeId = null)
     {
-        return $this->getConfigValue($this->getXmlConfig('client_secret'), $storeId);
+        return $this->_encryptor->decrypt($this->getConfigValue($this->getXmlConfig('client_secret'), $storeId));
+    }
+
+    /**
+     * @param int $storeId
+     * @return mixed
+     */
+    public function getAndroidClientId($storeId = null)
+    {
+        return $this->_encryptor->decrypt($this->getConfigValue($this->getXmlConfig('android_client_id'), $storeId));
+    }
+
+    /**
+     * @param int $storeId
+     * @return mixed
+     */
+    public function getIosClientId($storeId = null)
+    {
+        return $this->_encryptor->decrypt($this->getConfigValue($this->getXmlConfig('ios_client_id'), $storeId));
     }
 
     /**
