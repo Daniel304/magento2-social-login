@@ -31,7 +31,7 @@ Go to **Stores -> Configuration -> Customers -> Social Login**
 
 
 ## IMPLEMENT SOCIAL LOGIN ON YOUR MOBILE APP
-If you have a mobile app integrated with Magento REST API which want to have Social Login implemented. Currently tested for Facebook and Google login. Currently only working if user previously used the social login on website. Currently the social info not yet collected from the target social provider.
+If you have a mobile app integrated with Magento REST API which want to have Social Login implemented. Currently tested for Facebook and Google login.
 
 The url endpoint is: POST **/V1/integration/customer/social_token**
 
@@ -40,6 +40,15 @@ You required to send the **social_id** and **social_type** form field.
 **social_id**: Facebook / Google user unique ID.
 
 **social_type**: facebook / google.
+
+
+If a customer does not yet exist with social ID in database, you required to register them first into POST **/V1/customers** endpoint. Add required extension attributes to the customer POST data.
+`
+extension_attributes: {
+    social_id: newProps.socialData.id,
+    social_type: 'facebook'
+}
+`
 
 
 ## UPDATES
