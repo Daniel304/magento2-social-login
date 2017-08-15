@@ -22,13 +22,15 @@
   width: auto;
 }
 .social-btn button {
-  height: 35px;
+  height: 38px;
   border: none;
   border-radius: 0;
 }
 .social-btn button span span {
-  margin-left: 25px;
   color: #ffffff;
+  display: inline-block;
+  margin-left: 32px;
+  min-width: 110px;
 }
 
 .social-login-container {
@@ -98,5 +100,11 @@
 @media (min-width: 768px), print {
   .popup-authentication .modal-inner-wrap {
     width: 68%;
+  }
+  .form.password.reset,
+  .form.send.confirmation,
+  .form.password.forget,
+  .form.create.account {
+    min-width: auto;
   }
 }

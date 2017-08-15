@@ -12,6 +12,7 @@
 
 namespace Sulaeman\SocialLogin\Block\Form;
 
+use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\View\Element\Template;
 
@@ -26,17 +27,20 @@ class Login extends Template
     protected $helper;
 
     /**
+     * @param \Magento\Framework\Encryption\EncryptorInterface $encryptor
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Sulaeman\SocialLogin\Helper\Social $helper
      * @param array $data
      */
     public function __construct(
+      EncryptorInterface $encryptor, 
       Context $context, 
       Social $helper, 
       array $data = []
     )
     {
         $this->helper = $helper;
+        $this->helper->setEncryptor($encryptor);
         
         parent::__construct($context, $data);
     }

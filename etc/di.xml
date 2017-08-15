@@ -14,4 +14,11 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Sulaeman\SocialLogin\Api\SocialLoginRepositoryInterface" type="Sulaeman\SocialLogin\Model\SocialLoginRepository"/>
     <preference for="Sulaeman\SocialLogin\Api\Data\SocialLoginInterface" type="Sulaeman\SocialLogin\Model\SocialLogin"/>
+    <preference for="Sulaeman\SocialLogin\Api\TokenServiceInterface" type="Sulaeman\SocialLogin\Model\TokenService" />
+    <type name="Magento\Store\Model\Service\StoreConfigManager">
+        <plugin name="sulaeman_social_magento_store_model_service_storeconfigmanager_plugin" 
+                type="Sulaeman\SocialLogin\Plugin\Store\Model\Service\StoreConfigManager" 
+                sortOrder="99999" 
+                disabled="false" />
+    </type>
 </config>

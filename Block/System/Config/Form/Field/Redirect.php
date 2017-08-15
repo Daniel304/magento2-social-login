@@ -26,7 +26,7 @@ class Redirect extends Field
     /**
      * @var \Sulaeman\SocialLogin\Helper\Social
      */
-    protected $socialHelper;
+    protected $helper;
 
     /**
      * @var string
@@ -35,7 +35,7 @@ class Redirect extends Field
 
     /**
      * @param \Magento\Backend\Block\Template\Context $context
-     * @param \Sulaeman\SocialLogin\Helper\Social $socialHelper
+     * @param \Sulaeman\SocialLogin\Helper\Social $helper
      * @param array $data
      */
     public function __construct(
@@ -55,11 +55,21 @@ class Redirect extends Field
      */
     protected function _getElementHtml(AbstractElement $element)
     {
+        switch ($this->socialType) {
+            case 'Facebook':
+                $url = $this->helper->getBaseAuthUrl();
+                break;
+            
+            default:
+                $url = $this->helper->getAuthUrl($this->socialType);
+                break;
+        }
+
         $html = '<input ';
         $html .= 'style="opacity:1;" readonly ';
         $html .= 'id="' . $element->getHtmlId() . '" ';
         $html .= 'class="input-text admin__control-text" ';
-        $html .= 'value="' . $this->helper->getAuthUrl($this->socialType) . '" ';
+        $html .= 'value="' . $url . '" ';
         $html .= 'onclick="this.select()" type="text" />';
 
         return $html;

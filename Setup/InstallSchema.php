@@ -98,20 +98,20 @@ class InstallSchema implements InstallSchemaInterface
 
         $installer->getConnection()->addIndex(
             $setup->getTable('customer_social_login'),
-            $setup->getIdxName('customer_social_login', ['social_id']),
-            ['social_id']
+            $setup->getIdxName('customer_social_login', [SocialLoginInterface::SOCIAL_ID]),
+            [SocialLoginInterface::SOCIAL_ID]
         );
 
         $installer->getConnection()->addIndex(
             $setup->getTable('customer_social_login'),
-            $setup->getIdxName('customer_social_login', ['customer_id']),
-            ['customer_id']
+            $setup->getIdxName('customer_social_login', [SocialLoginInterface::CUSTOMER_ID]),
+            [SocialLoginInterface::CUSTOMER_ID]
         );
 
         $installer->getConnection()->addIndex(
             $setup->getTable('customer_social_login'),
-            $setup->getIdxName('customer_social_login', ['type']),
-            ['type']
+            $setup->getIdxName('customer_social_login', [SocialLoginInterface::TYPE]),
+            [SocialLoginInterface::TYPE]
         );
 
         $installer->endSetup();
