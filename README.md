@@ -3,6 +3,7 @@ Implement social login for Magento 2.x. Inspired by **[mageplaza/magento-2-socia
 
 I'm not forking or help to improve the **mageplaza/magento-2-social-login**, because too much modification required and that extension having ads for Mageplaza products, so I just create a new one.  While I'm copy some small amount of the source codes to use in this extension.
 
+
 ## SOCIAL LOGIN SUPPORT
 - [Facebook](https://developers.facebook.com/apps)
 - [Google](https://code.google.com/apis/console/)
@@ -11,9 +12,11 @@ I'm not forking or help to improve the **mageplaza/magento-2-social-login**, bec
 
 You can help to add more social login support based on **[hybridauth/hybridauth](https://github.com/hybridauth/hybridauth)** support.
 
+
 ## DEPENDENCIES
 - **PHP 7.0.12**, I think should also working in **PHP 5.5.9** and above.
 - **[hybridauth/hybridauth](https://github.com/hybridauth/hybridauth) version 2.9.x**, not tested with HybridAuth 3 (not yet released). Install it using composer first.
+
 
 ## INSTALLATION
 - Create "**app/code/Sulaeman/SocialLogin**" folder.
@@ -22,18 +25,24 @@ You can help to add more social login support based on **[hybridauth/hybridauth]
 - Run "**php bin/magento setup:di:compile**"
 - Run '**php bin/magento setup:static-content:deploy --area="frontend"**'.
 
+
 ## CONFIGURATION
 Go to **Stores -> Configuration -> Customers -> Social Login**
+
 
 ## IMPLEMENT SOCIAL LOGIN ON YOUR MOBILE APP
 If you have a mobile app integrated with Magento REST API which want to have Social Login implemented. Currently tested for Facebook and Google login.
 
 The url endpoint is:
+
 POST **/V1/integration/customer/social_token**
+
 You required to send the **social_id** and **social_type** form field.
 
 **social_id**: Facebook / Google user unique ID.
+
 **social_type**: facebook / google.
+
 
 ## UPDATES
 -|- 15-08-2017 (Sulaeman)
@@ -45,8 +54,10 @@ You required to send the **social_id** and **social_type** form field.
    - Remove unnecessary files from previous version.
    - Update the button images.
 
+
 -|- 05-04-2017 (Sulaeman)
    - Magento 2.1.5 support
+
 
 ## SCREENSHOTS
 Description | Screenshot
