@@ -31,6 +31,13 @@ interface SocialLoginRepositoryInterface
     public function getById($id);
 
     /**
+     * @param mixed $id
+     * @return \Sulaeman\SocialLogin\Api\Data\SocialLoginInterface[]
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
+    public function getAllByCustomerId($id);
+
+    /**
      * @param string $type
      * @param mixed $id
      * @return \Sulaeman\SocialLogin\Api\Data\SocialLoginInterface

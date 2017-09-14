@@ -75,6 +75,20 @@ class SocialLoginRepository implements SocialLoginRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    public function getAllByCustomerId($id)
+    {
+        $object = $this->collectionFactory->create();
+        $object->addFieldToFilter('customer_id', $id);
+        $items = $object->getItems();
+        if (empty($items)) {
+            throw new NoSuchEntityException(__('Object with customer id "%1" does not exist.', $id));
+        }
+        return $items;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getBySocial($type, $id)
     {
         $object = $this->collectionFactory->create();

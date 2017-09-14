@@ -17,4 +17,9 @@
                   instance="Sulaeman\SocialLogin\Observer\Customer\Model\ResourceModel\CustomerRepository\SaveAfterDataObject"
                   disabled="false" />
     </event>
+    <event name="customer_delete_after">
+        <observer name="sulaeman_sociallogin_customer_delete_after"
+                  instance="Sulaeman\SocialLogin\Observer\Customer\Model\Customer\DeleteAfter"
+                  disabled="false" />
+    </event>
 </config>
