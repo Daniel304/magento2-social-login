@@ -53,6 +53,10 @@ extension_attributes: {
 
 
 ## UPDATES
+-|- 13-11-2017 (Sulaeman)
+   - Magento 2.2.1 support
+
+
 -|- 15-08-2017 (Sulaeman)
    - Magento 2.1.7 support
    - Provide correct Valid OAuth redirect URI information in field setting for Facebook.
